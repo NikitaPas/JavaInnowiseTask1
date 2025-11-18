@@ -1,0 +1,49 @@
+package org.pasnikita.entity;
+
+
+import java.util.Arrays;
+import java.util.Objects;
+
+public class ArrayUtils {
+  private int id;
+  private int[] values;
+
+  public ArrayUtils(int id, int[] values) {
+    this.id = id;
+    this.values = Arrays.copyOf(values, values.length);
+  }
+
+  public int getId() {
+    return id;
+  }
+
+  public int[] getValues() {
+    return Arrays.copyOf(values, values.length);
+  }
+
+  @Override
+  public boolean equals(Object o) {
+    if (this == o) return true;
+    if (o == null || getClass() != o.getClass()) return false;
+
+    ArrayUtils that = (ArrayUtils) o;
+
+    if (id != that.id) return false;
+    return Arrays.equals(values, that.values); // без Objects!
+  }
+
+  @Override
+  public int hashCode() {
+    int result = id;
+    result = 31 * result + Arrays.hashCode(values);
+    return result;
+  }
+
+  @Override
+  public String toString() {
+    return "CustomArray{" +
+            "id=" + id +
+            ", values=" + Arrays.toString(values) +
+            '}';
+  }
+}
