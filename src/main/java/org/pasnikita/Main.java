@@ -63,7 +63,6 @@ public class Main {
       return;
     }
 
-    // вывод результата
     System.out.println("=== Result Arrays ===");
     arrays.forEach(System.out::println);
   }

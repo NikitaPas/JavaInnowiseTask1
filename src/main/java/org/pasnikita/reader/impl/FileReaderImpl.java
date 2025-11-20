@@ -14,7 +14,7 @@ import java.util.List;
 public class FileReaderImpl implements FileReader {
   public static final Logger LOGGER = LogManager.getLogger();
 
-  @Override
+    @Override
     public List<String> read(String path) throws ArrayException {
     List<String> lines;
       try{
