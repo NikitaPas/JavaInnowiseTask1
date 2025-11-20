@@ -1,37 +1,30 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<Configuration status="INFO">
-    <Properties>
-        <property name="LOG_DIR">logs</property>
-        <property name="ARCHIVE_LOG_DIR">${LOG_DIR}/archive</property>
-        <property name="pattern_file">%d{HH:mm:ss.SSS} [%t] %-5level %logger{5} - %msg%n</property>
-    </Properties>
-
+<Configuration status="WARN" monitorInterval="30">
     <Appenders>
+        <!-- Console output -->
         <Console name="Console" target="SYSTEM_OUT">
-            <PatternLayout pattern="%r %-5level %logger{3} - %msg%n"/>
+            <PatternLayout pattern="%d{HH:mm:ss.SSS} [%t] %-5level %logger{36} - %msg%n"/>
         </Console>
 
-        <RollingFile name="FileRolling" filename="${LOG_DIR}/text_log.log" append="true"
-                     filePattern="${LOG_DIR}/${date:yyyy-MM-dd}/%d{yyyy-MM-dd_HH-mm}_%i.log">
-            <PatternLayout pattern="${pattern_file}"/>
+        <!-- Rolling file -->
+        <RollingFile name="FileLogger"
+                     fileName="logs/app.log"
+                     filePattern="logs/app-%d{yyyy-MM-dd}-%i.log.gz">
+            <PatternLayout>
+                <pattern>%d{yyyy-MM-dd HH:mm:ss} %-5level %logger{36} - %msg%n</pattern>
+            </PatternLayout>
             <Policies>
-                <SizeBasedTriggeringPolicy size="1KB"/>
+                <SizeBasedTriggeringPolicy size="5 MB"/>
+                <TimeBasedTriggeringPolicy/>
             </Policies>
-            <DefaultRolloverStrategy max="10"/>
         </RollingFile>
     </Appenders>
 
     <Loggers>
-        <Logger name="Log_Console" level="debug" additivity="true">
+        <!-- Root logger -->
+        <Root level="info">
             <AppenderRef ref="Console"/>
-        </Logger>
-
-        <Logger name="Rolling_File" level="debug" additivity="false">
-            <AppenderRef ref="FileRolling"/>
-        </Logger>
-
-        <Root level="all">
-            <AppenderRef ref="FileRolling"/>
-            <AppenderRef ref="Console"/>
+            <AppenderRef ref="FileLogger"/>
         </Root>
     </Loggers>
+</Configuration>

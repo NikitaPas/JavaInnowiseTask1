@@ -2,13 +2,12 @@ package org.pasnikita.entity;
 
 
 import java.util.Arrays;
-import java.util.Objects;
 
-public class ArrayUtils {
+public class CustomArray {
   private int id;
   private int[] values;
 
-  public ArrayUtils(int id, int[] values) {
+  public CustomArray(int id, int[] values) {
     this.id = id;
     this.values = Arrays.copyOf(values, values.length);
   }
@@ -26,7 +25,7 @@ public class ArrayUtils {
     if (this == o) return true;
     if (o == null || getClass() != o.getClass()) return false;
 
-    ArrayUtils that = (ArrayUtils) o;
+    CustomArray that = (CustomArray) o;
 
     if (id != that.id) return false;
     return Arrays.equals(values, that.values); // без Objects!
