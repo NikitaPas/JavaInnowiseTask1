@@ -34,6 +34,6 @@ public class ArraySearchTest {
   @Test
   void testFindMin() throws ArrayException {
     int actual = arraySearch.findMin(customArray);
-    assertEquals(3, actual);
+    assertEquals(1, actual);
   }
 }
