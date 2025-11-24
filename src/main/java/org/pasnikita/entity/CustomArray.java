@@ -40,9 +40,10 @@ public class CustomArray {
 
   @Override
   public String toString() {
-    return "CustomArray{" +
-            "id=" + id +
-            ", values=" + Arrays.toString(values) +
-            '}';
+    final StringBuilder sb = new StringBuilder("CustomArray{");
+    sb.append("id=").append(id);
+    sb.append(", values=").append(Arrays.toString(values));
+    sb.append('}');
+    return sb.toString();
   }
 }

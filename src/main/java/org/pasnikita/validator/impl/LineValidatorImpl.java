@@ -7,6 +7,7 @@ public class LineValidatorImpl implements LineValidator {
 
   @Override
   public boolean isValid(String line) {
+
     return line != null && line.matches(VALID_PATTERN);
   }
 }

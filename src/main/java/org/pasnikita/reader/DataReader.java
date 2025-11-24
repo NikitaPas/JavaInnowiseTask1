@@ -4,7 +4,7 @@ import org.pasnikita.exception.ArrayException;
 
 import java.util.List;
 
-public interface FileReader {
+public interface DataReader {
 
   List<String> read(String path) throws ArrayException;
 

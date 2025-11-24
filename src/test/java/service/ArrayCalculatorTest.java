@@ -3,11 +3,10 @@ package service;
 import org.junit.jupiter.api.*;
 import org.pasnikita.entity.CustomArray;
 import org.pasnikita.exception.ArrayException;
-import org.pasnikita.factory.ArrayFactory;
 import org.pasnikita.service.ArrayCalculator;
 import org.pasnikita.service.impl.ArrayCalculatorImpl;
 
-import static org.junit.jupiter.api.Assertions.assertArrayEquals;
+
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
 public class ArrayCalculatorTest {

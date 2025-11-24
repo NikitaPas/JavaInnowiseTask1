@@ -2,15 +2,14 @@ package org.pasnikita;
 
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
-import org.apache.logging.log4j.core.util.ArrayUtils;
 import org.pasnikita.entity.CustomArray;
 import org.pasnikita.exception.ArrayException;
 import org.pasnikita.factory.ArrayFactory;
 import org.pasnikita.factory.impl.ArrayFactoryImpl;
 import org.pasnikita.parser.ArrayParser;
 import org.pasnikita.parser.impl.ArrayParserImpl;
-import org.pasnikita.reader.FileReader;
-import org.pasnikita.reader.impl.FileReaderImpl;
+import org.pasnikita.reader.DataReader;
+import org.pasnikita.reader.impl.DataReaderImpl;
 import org.pasnikita.validator.LineValidator;
 import org.pasnikita.validator.impl.LineValidatorImpl;
 
@@ -25,14 +24,14 @@ public class Main {
 
     String filePath = "src/data/data.txt";
 
-    FileReader fileReader = new FileReaderImpl();
+    DataReader dataReader = new DataReaderImpl();
     LineValidator validator = new LineValidatorImpl();
     ArrayParser parser = new ArrayParserImpl();
     ArrayFactory factory = new ArrayFactoryImpl();
 
     List<CustomArray> arrays = new ArrayList<>();
     try {
-      List<String> lines = fileReader.read(filePath);
+      List<String> lines = dataReader.read(filePath);
       LOGGER.info("File read successfully. Total lines: " + lines.size());
 
       for (String line : lines) {
