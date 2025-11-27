@@ -7,7 +7,7 @@ import org.pasnikita.service.ArrayCalculator;
 public class ArrayCalculatorImpl implements ArrayCalculator {
 
   @Override
-  public int calcSum(CustomArray customArray) throws ArrayException {
+  public int calcSum(CustomArray customArray) {
 
     int[] array = customArray.getValues();
     int resultSum = 0;

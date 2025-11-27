@@ -1,15 +1,24 @@
 package org.pasnikita.repository;
 
 import org.pasnikita.entity.CustomArray;
+import org.pasnikita.observer.CustomArrayEvent;
+import org.pasnikita.observer.CustomArrayObservable;
+import org.pasnikita.observer.CustomArrayObserver;
+import org.pasnikita.specification.Specification;
 
+import java.util.ArrayList;
+import java.util.Comparator;
 import java.util.List;
 
 public class Repository {
-
   private List<CustomArray> arrayList;
+  private static Repository instance;
 
-  public Repository(List<CustomArray> arrayList) {
-    this.arrayList = arrayList;
+  public static Repository getInstance() {
+    if (instance == null) {
+      instance = new Repository();
+    }
+    return instance;
   }
 
   public boolean add(CustomArray customArray) {
@@ -36,7 +45,21 @@ public class Repository {
     return arrayList.remove(index);
   }
 
-//  public List<CustomArray> query(Specification specification){
-//
-//  }
+  public List<CustomArray> sort(Comparator<? super CustomArray> comparator) {
+    return arrayList.stream()
+            .sorted(comparator)
+            .toList();
+  }
+
+  public List<CustomArray> query(Specification specification) {
+    List<CustomArray> result = new ArrayList<>();
+
+    for (CustomArray customArray : arrayList) {
+      if (specification.specify(customArray)) {
+        result.add(customArray);
+      }
+    }
+
+    return result;
+  }
 }
